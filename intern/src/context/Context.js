@@ -4,7 +4,8 @@ import {
   signup,
   signin,
   logout,
-  FormUpload, getFiles
+  FormUpload,
+  getFiles,
 } from "../requests/user";
 import { Actions } from "./actions";
 import Reducer from "./reducer";
@@ -20,7 +21,6 @@ export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
   useEffect(() => {
     getLoggedIn().then((res) => {
-      console.log(res);
       dispatch({
         type: Actions.SET_IS_LOGGED_IN,
         payload: res.auth,
@@ -30,16 +30,13 @@ export const ContextProvider = ({ children }) => {
         payload: res.isAdmin,
       });
     });
-    getFiles().then(res => {
-      console.log(res);
+    getFiles().then((res) => {
       dispatch({
         type: Actions.SET_FILES,
-        payload:res
-      })
-    })
-    
+        payload: res,
+      });
+    });
   }, []);
-  
 
   const userSignup = (data) => {
     signup(data).then((res) => {
@@ -64,14 +61,13 @@ export const ContextProvider = ({ children }) => {
   };
   const logOut = () => {
     logout().then((res) => {
-
       dispatch({
         type: Actions.SET_IS_LOGGED_IN,
         payload: res.auth,
       });
       dispatch({
-        type: Actions.CLEARING_DATA
-      })
+        type: Actions.CLEARING_DATA,
+      });
     });
   };
   const uploadForm = (form) => {
@@ -88,9 +84,9 @@ export const ContextProvider = ({ children }) => {
   };
   const removeMessageAlert = () => {
     dispatch({
-     type: Actions.CLEARING_DATA
-    })
-  }
+      type: Actions.REMOVE_ALERT,
+    });
+  };
   return (
     <context.Provider
       value={{
@@ -102,7 +98,7 @@ export const ContextProvider = ({ children }) => {
         logOut,
         uploadForm,
         dispatch,
-        removeMessageAlert
+        removeMessageAlert,
       }}
     >
       {children}
@@ -110,4 +106,4 @@ export const ContextProvider = ({ children }) => {
   );
 };
 
-export default ( context);
+export default context;

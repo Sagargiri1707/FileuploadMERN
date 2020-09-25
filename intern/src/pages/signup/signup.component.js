@@ -19,7 +19,7 @@ function Signup(props) {
     e.preventDefault();
     userSignup(signupData);
   };
-  if (isloggedIn) return <Redirect to="/dashboard" />;
+  if (isloggedIn) return <Redirect to="/" />;
   return (
     <div className={`row `}>
       <form className="col s12" onSubmit={submitForm}>

@@ -4,12 +4,11 @@ const fileSchema = mongoose.Schema(
   {
     data: Buffer,
     contentType: String,
-        name: String,
-        by: {
-            
-              type: mongoose.Schema.ObjectId,
-                ref: "User",
-    }
+    name: String,
+    by: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

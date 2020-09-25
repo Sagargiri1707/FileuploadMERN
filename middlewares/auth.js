@@ -17,16 +17,13 @@ module.exports.signinValidator = (req, res, next) => {
       max: 150,
     });
   const errors = validationResult(req);
-  console.log(errors.errors);
 
   if (errors.errors.length >= 1) {
     const firstError = errors.errors.map((err) => err.msg)[0];
-    console.log(firstError);
     return res.status(400).json({
       error: firstError,
     });
   }
-  console.log('in here');
   next();
 };
 
@@ -50,10 +47,8 @@ module.exports.signupValidator = (req, res, next) => {
     });
 
   const errors = validationResult(req);
-  console.log(errors, "errro");
   if (errors.errors.length >= 1) {
     const firstError = errors.errors.map((err) => err.msg)[0];
-    console.log(firstError, "asdf");
     return res.status(400).json({
       error: firstError,
     });

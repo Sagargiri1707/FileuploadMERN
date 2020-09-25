@@ -53,7 +53,6 @@ passport.use(
     },
     function (req, email, password, done) {
       User.findOne({ email: email }, (err, user) => {
-        console.log(err,user,'in passport');
         if (err) {
           return done(err);
         }

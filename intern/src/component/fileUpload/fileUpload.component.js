@@ -17,8 +17,8 @@ function FileUpload(props) {
     for (var x in formdata) {
       form.set(x, formdata[x]);
     }
-      uploadForm(form);
-      setFormdata()
+    uploadForm(form);
+    setFormdata();
   };
 
   return (
@@ -36,14 +36,15 @@ function FileUpload(props) {
           <div className="file-path-wrapper">
             <input className="file-path validate" type="text" />
           </div>
-              </div>
-              
-              {
-                  formdata?
-                  <button className="waves-effect waves-light btn" type="submit">
-                    Upload file
-                  </button>:<></>
-              }
+        </div>
+
+        {formdata ? (
+          <button className="waves-effect waves-light btn" type="submit">
+            Upload file
+          </button>
+        ) : (
+          <></>
+        )}
       </form>
     </div>
   );

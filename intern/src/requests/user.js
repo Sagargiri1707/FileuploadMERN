@@ -11,7 +11,7 @@ export const getLoggedIn = async () => {
 export const signup = async (data) => {
   return Axios.post("/api/user/signup", data)
     .then((res) => {
-      console.log(res.data);
+     
       return res.data;
     })
     .catch((err) => {
@@ -22,8 +22,7 @@ export const signup = async (data) => {
 export const signin = async (data) => {
   try {
     const res = await Axios.post("/api/user/signin", data);
-    console.log(res.data);
-    return res.data;
+     return res.data;
   } catch (err) {
     console.log(err);
   }
@@ -51,11 +50,11 @@ export const FormUpload = async (form) => {
   }
 };
 
-export const getFiles=async () => {
+export const getFiles = async () => {
   try {
-    const res = await Axios.get('/api/user/getFile');
+    const res = await Axios.get("/api/user/getFile");
     return res.data;
   } catch (err) {
     console.log(err);
   }
-}
+};
