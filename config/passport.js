@@ -26,7 +26,7 @@ passport.use(
           return done(err);
         }
         if (user) {
-          return done(null, { message: "User already registered" });
+          return done(null, false,{ message: "User already registered" });
         }
         var newUser = new User();
 

@@ -40,6 +40,7 @@ export const ContextProvider = ({ children }) => {
 
   const userSignup = (data) => {
     signup(data).then((res) => {
+   
       dispatch({
         type: Actions.SET_MESSAGE,
         payload: res.info,
@@ -49,6 +50,7 @@ export const ContextProvider = ({ children }) => {
 
   const userSignin = (data) => {
     signin(data).then((Res) => {
+      
       dispatch({
         type: Actions.SET_MESSAGE,
         payload: Res.info,
