@@ -6,6 +6,7 @@ var ExpressSession = require("express-session");
 var passport = require("passport");
 var mongoose = require("mongoose");
 var MongoStore = require("connect-mongo")(ExpressSession);
+const path=require('path')
 
 var cors = require("cors");
 var app = express();
@@ -16,11 +17,13 @@ mongoose.connect(`${process.env.MONGOURI}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+app.use(express.static(path.join(__dirname,'intern/build')))
 
 mongoose.connection.on("open", () => {
   console.log("database connected successfully");
 });
 
+app.use(express.)
 app.use(logger("dev"));
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
